@@ -1,14 +1,17 @@
-import { Background } from "./styled";
+import { Container, Logo, Header, DivNomePerfil, DivFoto } from "./styled";
+
+import LogoSVG from "../../../src/assets/images/logo.svg";
+
 
 const Profile = () => {
 
     return (
-        <>
-        <Background>
+        <Container>
 
-        </Background>
+            <Logo src={LogoSVG} alt="Logo" />
+            
+        </Container>
         
-        </>
     )
 }
 
