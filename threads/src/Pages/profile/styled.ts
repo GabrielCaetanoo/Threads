@@ -4,10 +4,21 @@ type TypeTextoCustomizavel = {
     color: string;
     size: string;
     left?: string;
+    top?: string;
+    weight?: string;
 }
+
+type ContainerRespostasProps = {
+    isVisible: boolean;
+};
 
 type TypeIcone = {
     top?: string;
+    bottom?: string;
+    left?: string;
+    radius?: string;
+    border?: string;
+    width?: string;
 }
 
 type TypeDivThreadsOuRespostas = {
@@ -165,15 +176,21 @@ export const TextoCustumizavel = styled.p<TypeTextoCustomizavel>`
     color: ${(props) => (props.color ? props.color : "white")};
     font-size: ${(props) => (props.size ? `${props.size}px` : "15px")};
     letter-spacing: 0.2px;
-    margin-left: ${(props) => props.left ? `${props.left}px` : "0px"}
+    margin-left: ${(props) => props.left ? `${props.left}px` : "0px"};
+    margin-top: ${(props) => props.top ? `${props.top}px` : "0px"};
+    font-weight: ${(props) => props.weight ? props.weight : 300};
 `;
 
 export const Icone = styled.img<TypeIcone>`
     width: 100%;
-    max-width: 23px;
+    max-width: ${(props) => props.width ? `${props.width}px` : "23PX"};
     margin-right: 15px;
     cursor: pointer;
-    margin-bottom: ${(props) => props.top ? `${props.top}px` : "0px"};
+    border: ${(props) => props.border ? props.border : "none"};
+    border-radius: ${(props) => props.radius ? props.radius : "0px"};
+    margin-bottom: ${(props) => props.bottom ? `${props.bottom}px` : "0px"};
+    margin-top: ${(props) => props.top ? `${props.top}px` : "0px"};
+    margin-left: ${(props) => props.left ? `${props.left}px` : "0px"};
 `;
 
 export const ContainerThredsOuRespostas = styled.div`
@@ -210,6 +227,7 @@ export const FotoThreadsDiv = styled.img`
     border-radius: 50%;
     width: 100%;
     max-width: 37px;
+    max-height: 37px;
 `;
 
 export const DivPostThreadsContainer = styled.div`
@@ -217,6 +235,7 @@ export const DivPostThreadsContainer = styled.div`
     flex: 8;
     width: 100%;
     margin-left: -8px;
+    flex-direction: column;
 `;
 
 export const HeaderDivPostThreadsContainer = styled.div`
@@ -236,4 +255,51 @@ export const TempoPostThreads = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     flex: 1;
+`;
+
+export const DivPostThreads = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`;
+
+export const DivIconesThreads = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 0px;
+    margin-top: 15px;
+`;
+
+export const ContainerDownload = styled.div`
+    margin-top: 35px;
+    background-color: #0A0A0A;
+    width: 100%;
+    border-radius: 15px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    max-width: 500px;
+`;
+
+export const BotaoBaixarThreads = styled.button`
+    font-family: "roboto", sans-serif;
+    font-size: 15px;
+    color: #F3F5F7;
+    border: 1.5px solid #5D5D5D;
+    background: transparent;
+    padding: 7px 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 300;
+    margin-top: 30px;
+`;
+
+export const ContainerRespostas = styled.div<ContainerRespostasProps>`
+    display: ${(props) => (props.isVisible ? "flex" : "none")};
+    flex-direction: column;
+    margin-top: 20px;
 `;
