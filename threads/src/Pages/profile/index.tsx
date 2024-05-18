@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import { Container, 
          Logo, 
          Header, 
@@ -14,13 +16,26 @@ import { Container,
          DivSeguidoresLink,
          DivIconesInstagram,
          TextoCustumizavel,
-         LogoInstagram} from "./styled";
+         ContainerThredsOuRespostas,
+         DivThreadsOuRespostas,
+         ContainerThreads,
+         DivFotoThreadsContainer,
+         FotoThreadsDiv,
+         DivPostThreadsContainer,
+         HeaderDivPostThreadsContainer,
+         PerfilThreads,
+         TempoPostThreads,
+         Icone} from "./styled";
 
 import LogoSVG from "../../../src/assets/images/logo.svg";
 import Perfil from "../../../src/assets/images/Perfil.jpg";
 import LogoInstagramSVG from "../../../src/assets/images/instagram.svg"
+import Mais from "../../../src/assets/images/mais.svg"
+import Ellipsis from "../../../src/assets/images/ellipsis.svg"
 
 const Profile = () => {
+
+    const [ThreadsOuRespostas, setThreadsOuRespostas] = useState("threads");
 
     return (
         <Container>
@@ -71,10 +86,54 @@ const Profile = () => {
                 </DivSeguidoresLink>
 
                 <DivIconesInstagram>
-                    <LogoInstagram src={LogoInstagramSVG} alt="ISSO AI"></LogoInstagram>
+                    <Icone src={LogoInstagramSVG} alt="ISSO AI"></Icone>
+                    <Icone src={Mais} alt="ISSO AI"></Icone>
                     
                 </DivIconesInstagram>
             </ContainerSeguidoresLink>
+
+            <ContainerThredsOuRespostas>
+                <DivThreadsOuRespostas outlined={ThreadsOuRespostas === "threads" ? "true" : "false"}
+                onClick={() => setThreadsOuRespostas("threads")} >
+                    <TextoCustumizavel color="white" size="15">
+                         Threads
+                    </TextoCustumizavel>    
+                </DivThreadsOuRespostas >
+
+                <DivThreadsOuRespostas outlined={ThreadsOuRespostas === "respostas" ? "true" : "false"}
+                onClick={() => setThreadsOuRespostas("respostas")}>
+                    <TextoCustumizavel color="white" size="15">
+                         Respostas
+                    </TextoCustumizavel>
+
+                </DivThreadsOuRespostas >
+            </ContainerThredsOuRespostas>
+
+            <ContainerThreads display={ThreadsOuRespostas === "threads" ? "flex" : "none"}>
+                <DivFotoThreadsContainer>
+                    <FotoThreadsDiv src={Perfil}/>
+
+                </DivFotoThreadsContainer>
+
+
+                <DivPostThreadsContainer>
+                    <HeaderDivPostThreadsContainer>
+                        <PerfilThreads>
+                            <TextoCustumizavel left="-15" size="14" color="white">
+                                @gabriel_caetanou
+                            </TextoCustumizavel>
+                        </PerfilThreads>
+
+                        <TempoPostThreads>
+                            <TextoCustumizavel size="14" color="gray">
+                                3sem <Icone top="-7" src={Ellipsis} width="15"/>
+                            </TextoCustumizavel>
+                        </TempoPostThreads>
+                    </HeaderDivPostThreadsContainer>
+                
+                </DivPostThreadsContainer>
+
+            </ContainerThreads>
             
         </Container>
         

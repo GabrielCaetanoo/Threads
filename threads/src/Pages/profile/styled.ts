@@ -3,6 +3,19 @@ import styled, {createGlobalStyle} from 'styled-components';
 type TypeTextoCustomizavel = {
     color: string;
     size: string;
+    left?: string;
+}
+
+type TypeIcone = {
+    top?: string;
+}
+
+type TypeDivThreadsOuRespostas = {
+    outlined: string;
+}
+
+type TypeContainerThreads = {
+    display?: string;
 }
 
 export const GlobalStyles = createGlobalStyle`
@@ -142,6 +155,7 @@ export const DivIconesInstagram = styled.div`
     align-items: center;
     flex-direction: row;
     flex: 1;
+    justify-content: flex-end;
 `;
 
 export const TextoCustumizavel = styled.p<TypeTextoCustomizavel>`
@@ -151,10 +165,75 @@ export const TextoCustumizavel = styled.p<TypeTextoCustomizavel>`
     color: ${(props) => (props.color ? props.color : "white")};
     font-size: ${(props) => (props.size ? `${props.size}px` : "15px")};
     letter-spacing: 0.2px;
+    margin-left: ${(props) => props.left ? `${props.left}px` : "0px"}
 `;
 
-export const LogoInstagram = styled.img`
+export const Icone = styled.img<TypeIcone>`
     width: 100%;
-    max-width: 25px;
+    max-width: 23px;
+    margin-right: 15px;
+    cursor: pointer;
+    margin-bottom: ${(props) => props.top ? `${props.top}px` : "0px"};
+`;
 
+export const ContainerThredsOuRespostas = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+`;
+
+export const DivThreadsOuRespostas = styled.div<TypeDivThreadsOuRespostas>`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 12px 0px;
+    margin-top: 15px;
+    border-bottom: ${(props) => props.outlined === "true" ? "1px solid white" : "0px"};
+    cursor: pointer;
+`;
+
+export const ContainerThreads = styled.div<TypeContainerThreads>`
+    display: ${(props) => props.display ?  props.display : "flex"};
+    width: 100%;
+    color: white;
+    padding-top: 30px;
+`;
+
+export const DivFotoThreadsContainer = styled.div`
+    display: flex;
+    flex: 1;
+`;
+
+export const FotoThreadsDiv = styled.img`
+    border-radius: 50%;
+    width: 100%;
+    max-width: 37px;
+`;
+
+export const DivPostThreadsContainer = styled.div`
+    display: flex;
+    flex: 8;
+    width: 100%;
+    margin-left: -8px;
+`;
+
+export const HeaderDivPostThreadsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+`;
+
+export const PerfilThreads = styled.div` 
+    display: flex;
+    flex: 1;
+    cursor: pointer;
+`;
+
+export const TempoPostThreads = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex: 1;
 `;
